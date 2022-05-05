@@ -7,7 +7,9 @@ const SideBar = () => {
       <ul>
         <ListItem>Хянах Самбар</ListItem>
         <ListItem>Харилцагч</ListItem>
-        <ListItem>Бүтээгдэхүүн</ListItem>
+        <ListItem>
+          <Link to="product">Бүтээгдэхүүн</Link>
+        </ListItem>
         <ListItem>Багц бүтээгдэхүүн</ListItem>
         <ListItem>Хөнгөлөлт урамшуулал</ListItem>
         <ListItem>Ханган нийлүүлэлт</ListItem>
@@ -32,7 +34,7 @@ const SideBar = () => {
 
 const ListItem = ({ children }) => {
   return (
-    <li className="hover:text-white lg:text-lg text-xs p-2 leading-8 text-[#969AA7]">
+    <li className="hover:text-white hover:bg-[#202126] lg:text-lg text-xs p-2 leading-8 text-[#969AA7]">
       {children}
     </li>
   );

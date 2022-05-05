@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const Sector = () => {
-  const [sectors, setSectors] = useState([]);
+const Product = () => {
+  const [products, setProducts] = useState([]);
   const fetchData = async () => {
-    const res = await fetch("http://localhost:8080/company");
+    const res = await fetch("http://localhost:8080/product");
     const result = await res.json();
     result.forEach((i) => {
       const newElement = {
-        sectorId: i._id,
+        productId: i._id,
         name: i.title,
-        address: i.address,
-        phone: i.phone,
-        email: i.email,
+        unitPrice: i.unitPrice,
       };
-      setSectors((j) => [...j, newElement]);
+      setProducts((j) => [...j, newElement]);
     });
   };
   useEffect(() => {
@@ -25,15 +24,15 @@ const Sector = () => {
         <input
           className="bg-[#f2f6f9] text-sm leading-5 h-9 w-52 border-l border-l-[#d7dce5] px-2 py-3"
           type="text"
-          placeholder="Хайх салбарууд"
+          placeholder="Хайх бүтээгдэхүүн"
         />
-        <button className="text-sm bg-[#3192e4] text-white px-3 py-4 rounded-sm">
-          + Шинэ салбар
-        </button>
+        <p className="text-sm bg-[#3192e4] text-white px-3 py-4 rounded-sm">
+          <Link to="new_product">+ Шинэ бүтээгдэхүүн</Link>
+        </p>
       </div>
       <div className="m-4 p-2 bg-white">
         <div className="border-b p-2 border-[#e9e9e9]">
-          <p>Салбарууд</p>
+          <p>Бараанууд</p>
         </div>
         <table className="w-full mt-4">
           <thead>
@@ -41,17 +40,14 @@ const Sector = () => {
               <td>
                 <input type="checkbox" name="" id="" />
               </td>
-              <td>Засах</td>
-              <td>Салбарын ID</td>
+              <td>Барааны ID</td>
               <td>Нэр</td>
-              <td>Хаяг</td>
-              <td>Утасны дугаар</td>
-              <td>Email</td>
+              <td>Зарах үнэ</td>
             </tr>
           </thead>
           <tbody>
-            {sectors.map((sector, index) => {
-              return <SectorItem key={index} {...sector} />;
+            {products.map((product, index) => {
+              return <ProductItem key={index} {...product} />;
             })}
           </tbody>
         </table>
@@ -60,26 +56,17 @@ const Sector = () => {
   );
 };
 
-export default Sector;
+export default Product;
 
-const SectorItem = ({ edit, sectorId, name, address, phone, email }) => {
+const ProductItem = ({ productId, name, unitPrice }) => {
   return (
     <tr>
       <td>
         <input type="checkbox" name="" id="" />
       </td>
-      <td
-        onClick={() => {
-          edit();
-        }}
-      >
-        Засах
-      </td>
-      <td>{sectorId}</td>
+      <td>{productId}</td>
       <td>{name}</td>
-      <td>{address}</td>
-      <td>{phone}</td>
-      <td>{email}</td>
+      <td>{unitPrice}</td>
     </tr>
   );
 };
