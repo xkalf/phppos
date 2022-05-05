@@ -14,7 +14,9 @@ const SideBar = () => {
         <ListItem>Хөнгөлөлт урамшуулал</ListItem>
         <ListItem>Ханган нийлүүлэлт</ListItem>
         <ListItem>Тайлан</ListItem>
-        <ListItem>Татан авалт</ListItem>
+        <ListItem>
+          <Link to="purchase">Татан авалт</Link>
+        </ListItem>
         <ListItem>Борлуулалт</ListItem>
         <ListItem>Нийт хүргэлт</ListItem>
         <ListItem>Засварын захиалга</ListItem>

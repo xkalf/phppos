@@ -5,6 +5,7 @@ import Sector from "./pages/Sector";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import NewProduct from "./pages/NewProduct";
+import Purchased from "./pages/Purchased";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="sector" element={<Sector />} />
             <Route path="product" element={<Product />} />
-            <Route path="new_product" elemen={<NewProduct />} />
+            <Route path="new_product" element={<NewProduct />} />
+            <Route path="purchase" element={<Purchased />} />
+            {/* <Route path="purchaseT" element={<PurchaseT />} /> */}
           </Routes>
         </div>
       </div>

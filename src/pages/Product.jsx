@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
   const fetchData = async () => {
     const res = await fetch("http://localhost:8080/product");
     const result = await res.json();
@@ -26,9 +27,14 @@ const Product = () => {
           type="text"
           placeholder="Хайх бүтээгдэхүүн"
         />
-        <p className="text-sm bg-[#3192e4] text-white px-3 py-4 rounded-sm">
-          <Link to="new_product">+ Шинэ бүтээгдэхүүн</Link>
-        </p>
+        <button
+          onClick={() => {
+            navigate("/new_product");
+          }}
+          className="text-sm bg-[#3192e4] text-white px-3 py-4 rounded-sm"
+        >
+          + Шинэ бүтээгдэхүүн
+        </button>
       </div>
       <div className="m-4 p-2 bg-white">
         <div className="border-b p-2 border-[#e9e9e9]">
